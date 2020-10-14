@@ -4,6 +4,7 @@ import {
   checkLogin,
   login
 } from 'hlj-open-sdk';
+import 'hlj-open-sdk/dist/lib.css';
 import './App.scss';
 
 function App() {
