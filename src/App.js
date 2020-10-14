@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   ajax,
   checkLogin,
-  login
+  login,
+  trackAction
 } from 'hlj-open-sdk';
 import 'hlj-open-sdk/dist/lib.css';
 import './App.scss';
@@ -26,14 +27,23 @@ function App() {
     login();
   };
 
+  const handleTrack = () => {
+    trackAction('b-face-test.click');
+  };
+
   return (
     <div className="app">
-      <div className="section">
+      <section>
+        <h2>登录</h2>
         <div className="row">登录状态：{logined ? '已登录' : '未登录'}</div>
         {logined === false &&
           <button onClick={handleLogin}>登录</button>
         }
-      </div>
+      </section>
+      <section>
+        <h2>埋点</h2>
+        <button onClick={handleTrack}>点我</button>
+      </section>
     </div>
   );
 }
