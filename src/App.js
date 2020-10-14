@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { ajax, checkLogin } from 'hlj-open-sdk';
+import './App.scss';
 
 function App() {
+  const [logined, setLogined] = useState(null);
+
+  useEffect(() => {
+    const load = async() => {
+      const value = await checkLogin();
+      setLogined(value);
+
+      const url = 'https://p.helijia.com/api/magic/v2/pages/clientapp-index';
+      const data = await ajax({ url });
+      console.log(data);
+    }
+    load();
+  }, []);
+
+  const handleLogin = () => {
+
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="section">
+        <div className="row">登录状态：{logined ? '已登录' : '未登录'}</div>
+        {logined === false &&
+          <button onClick={handleLogin}>登录</button>
+        }
+      </div>
     </div>
   );
 }
