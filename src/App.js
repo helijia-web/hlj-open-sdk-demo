@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { ajax, checkLogin } from 'hlj-open-sdk';
+import {
+  ajax,
+  checkLogin,
+  login
+} from 'hlj-open-sdk';
 import './App.scss';
 
 function App() {
@@ -18,7 +22,7 @@ function App() {
   }, []);
 
   const handleLogin = () => {
-
+    login();
   };
 
   return (
