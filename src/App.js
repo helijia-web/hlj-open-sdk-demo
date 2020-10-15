@@ -9,7 +9,9 @@ import {
   go,
   hljurl,
   uploadImage,
-  imgurl
+  imgurl,
+  getPlatform,
+  doShare
 } from 'hlj-open-sdk';
 import 'hlj-open-sdk/dist/lib.css';
 import './App.scss';
@@ -78,6 +80,15 @@ function App() {
     console.log(res.path, '->', imgurl(res.path));
   };
 
+  const handleShare = () => {
+    const platform = getPlatform();
+    if (platform === 'ios' || platform === 'android') {
+      doShare();
+    } else {
+      alert('不支持');
+    }
+  };
+
   return (
     <div className="app">
       <section>
@@ -100,6 +111,16 @@ function App() {
         <input type="file" onChange={handleFileUpload} />
         { uploadLoading && <div>正在上传...</div> }
         { imageUrl && <img className="preview" src={imageUrl} alt="" /> }
+      </section>
+      <section>
+        <h2>平台判断</h2>
+        <div>{getPlatform()}</div>
+      </section>
+      <section>
+        <h2>分享</h2>
+        {
+          <button onClick={handleShare}>分享</button>
+        }
       </section>
     </div>
   );
