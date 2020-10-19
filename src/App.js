@@ -14,6 +14,7 @@ import {
   doShare
 } from 'hlj-open-sdk';
 import 'hlj-open-sdk/dist/lib.css';
+import 'hlj-open-sdk/dist/app.css';
 import './App.scss';
 
 function App() {
