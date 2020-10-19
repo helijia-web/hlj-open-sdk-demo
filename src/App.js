@@ -49,8 +49,12 @@ function App() {
     load();
   }, []);
 
+  const loginSuccess = () => {
+    setLogined(true);
+  }
+
   const handleLogin = () => {
-    login();
+    login(loginSuccess);
   };
 
   const handleTrack = () => {
