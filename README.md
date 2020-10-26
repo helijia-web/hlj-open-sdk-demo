@@ -20,3 +20,11 @@ yarn start
 预发环境：url 中添加 `hlj-env=staging`
 
 正式环境：url 中添加 `hlj-env=prod`
+
+### 项目注意
+
+1、项目使用哈希路由
+
+2、build 的最终结果
+
+html、js、css、图片等文件放在同一个文件夹下。
