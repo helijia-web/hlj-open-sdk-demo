@@ -5258,10 +5258,10 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
-hlj-open-sdk@^1.0.0-beta.5:
-  version "1.0.0-beta.5"
-  resolved "https://registry.npm.taobao.org/hlj-open-sdk/download/hlj-open-sdk-1.0.0-beta.5.tgz?cache=0&sync_timestamp=1603118276676&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhlj-open-sdk%2Fdownload%2Fhlj-open-sdk-1.0.0-beta.5.tgz#25ccf676fe4528f59ceefdf79ceb81fd573aa468"
-  integrity sha1-Jcz2dv5FKPWc7v33nOuB/Vc6pGg=
+hlj-open-sdk@^1.0.0-beta.12:
+  version "1.0.0-beta.13"
+  resolved "https://registry.npm.taobao.org/hlj-open-sdk/download/hlj-open-sdk-1.0.0-beta.13.tgz#9a398a02cadad28f9183f86be6e042fd518ed358"
+  integrity sha1-mjmKAsra0o+Rg/hr5uBC/VGO01g=
 
 hmac-drbg@^1.0.0:
   version "1.0.1"

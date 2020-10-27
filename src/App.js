@@ -9,6 +9,7 @@ import {
   go,
   hljurl,
   uploadImage,
+  getAppImage,
   imgurl,
   getPlatform,
   doShare
@@ -20,6 +21,8 @@ function App() {
   const [logined, setLogined] = useState(null);
   const [uploadLoading, setUploadLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
+  const [image, setImages] = useState('');
+
 
   useEffect(() => {
     const load = async() => {
@@ -39,7 +42,11 @@ function App() {
       title: '分享标题',
       desc: '分享副标题，一般会有很多字',
       link: 'https://m.helijia.com', // 分享出去的链接
-      mediaType: 0 // 代表分享的媒体类型 0 是链接 1 是单图
+      mediaType: 0,  // 代表分享的媒体类型 0 是链接 1 是单图 2是小程序
+      miniPath: '/pages/index',   // 分享的小程序地址
+      miniUserName: 'gh_899999999',
+      miniTitle: '分享小程序标题',
+      weappImg: 'https://static.helijia.cn/zmw/upload/active/bigfish/fishicon.jpg'
     });
 
     // 进入页面埋点
@@ -49,7 +56,12 @@ function App() {
   }, []);
 
   const loginSuccess = () => {
-    setLogined(true);
+    checkLogin().then(() => {
+      alert('登录成功')
+      setLogined(true);
+    }, () => {
+      alert('登录失败')
+    });
   }
 
   const handleLogin = () => {
@@ -93,6 +105,12 @@ function App() {
     }
   };
 
+  const handleImage = () => {
+    getAppImage({type: 3}).then(data => {
+      setImages(data);
+    });
+  };
+
   return (
     <div className="app">
       <section>
@@ -116,6 +134,15 @@ function App() {
         { uploadLoading && <div>正在上传...</div> }
         { imageUrl && <img className="preview" src={imageUrl} alt="" /> }
       </section>
+      {getPlatform() === 'android' &&
+      <section className="upload-section">
+        <h2>打开 app 的相册或者拍照</h2>
+        <button onClick={handleImage}>获取照片</button>
+        <div>
+          <img src={image} alt="" />
+        </div>
+      </section>
+      }
       <section>
         <h2>平台判断</h2>
         <div>{getPlatform()}</div>
@@ -131,3 +158,4 @@ function App() {
 }
 
 export default App;
+
