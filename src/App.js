@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import compareVersions                from 'compare-versions';
+import qs                             from 'query-string';
 import {
   setShare,
   ajax,
@@ -106,10 +108,16 @@ function App() {
   };
 
   const handleImage = () => {
-    getAppImage({type: 3}).then(data => {
-      setImages(data);
-    });
+    const { appVersion } = qs.parse(window.location.search);
+    // 该方法仅安卓 4.66.0 及以上版本可用 需要判断设备和版本号
+    if (getPlatform() === 'android' && compareVersions.compare(appVersion, '4.66.0', '>=')) {
+    // type 1 拍照 2 选相册 3 拍照+选相册
+      getAppImage({type: 3}).then(data => {
+        setImages(data); // "data:image/png;base64,xxxxxxxx"
+      })
+    }
   };
+
 
   return (
     <div className="app">
